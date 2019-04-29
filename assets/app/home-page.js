@@ -3,11 +3,11 @@ import isOnNeededPage from 'App/Utils/isOnNeededPage'
 // import Filter from './filter.svelte'
 
 if (document.readyState !== 'loading')
-  diagramGroupLogic()
+  homePageLogic()
 else
-  document.addEventListener('DOMContentLoaded', diagramGroupLogic)
+  document.addEventListener('DOMContentLoaded', homePageLogic)
 
-function diagramGroupLogic() {
+function homePageLogic() {
   if (! isOnNeededPage('home-page'))
     return
 
