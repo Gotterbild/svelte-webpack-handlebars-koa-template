@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+		<title>{{{ meta_tags.title }}}</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+		{{!-- If testing mode is turned on then load css files locally --}}
+		{{!-- resource_path is set in app.js --}}
+		<link rel="stylesheet" href="{{ resource_path }}/css/main-{{ release_id }}.css">
+
+		{{!--
+			Include all js that belongs in the HEAD
+			**IMPORTANT - DO NOT INCLUDE ANY 3RD PARTY LIBRARIES. USE
+			STANDARD WEBPACK BUNDLE LOCATED AT THE BOTTOM OF THE BODY
+		--}}
+		{{> javascript }}
+	</head>
+	<body id="top">
+
+	{{!-- Include Page Header --}}
+	{{> header }}
+
+	<div class="superwrap">
+
+		<main>
+
+			{{{body}}}{{!-- body is a result of views --}}
+
+		</main>
+
+		{{!-- Include Page Footer --}}
+		{{> footer }}
+
+	</div> <!-- superwrap row -->
+
+	{{!-- If testing mode is turned on then load JS files locally --}}
+	{{!-- resource_path is set in app.js --}}
+	<script src="{{resource_path}}/js/vendor-{{ release_id }}.bundle.min.js"></script>
+	<script src="{{resource_path}}/js/app-{{ release_id }}.bundle.min.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "name": "pilot-cms",
+  "version": "1.0.0",
+  "description": "Pilot CMS using Node.js",
+  "main": "index.js",
+  "dependencies": {
+    "d3": "^4.10.2",
+    "full-icu": "^1.2.0",
+    "hbs": "^4.0.1",
+    "intl-format-cache": "^2.0.5",
+    "intl-messageformat": "^2.2.0",
+    "koa": "^2.3.0",
+    "koa-hbs": "git+https://github.com/koajs/koa-hbs.git#next",
+    "koa-logger": "^3.0.1",
+    "koa-router": "^7.2.1",
+    "koa-send": "^4.1.0",
+    "lodash": "^4.17.4",
+    "raven": "^2.1.2",
+    "redis": "^2.8.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.1",
+    "supervisor": "^0.12.0"
+  },
+  "scripts": {
+    "start": "supervisor -w routes,routes/utils,locales,router.js,app.js -e 'js|json' -- --icu-data-dir=node_modules/full-icu app.js",
+    "webpack": "cd assets && npm start"
+  },
+  "author": "Paul Crowley",
+  "license": "ISC"
+}

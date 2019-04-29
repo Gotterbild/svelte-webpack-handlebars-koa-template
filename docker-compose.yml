@@ -1,0 +1,33 @@
+version: '3'
+services:
+  pilotcms2:
+    build: .
+    ports:
+     - "3000:3000"
+     - "8080:8080"
+    env_file:
+     - .env
+    # Volumes need to be specified explicitly as there
+    # is no way to exclude node_modules
+    volumes:
+     - ./routes:/usr/src/app/routes
+     - ./views:/usr/src/app/views
+     - ./locales:/usr/src/app/locales
+     - ./app.js:/usr/src/app/app.js
+     - ./router.js:/usr/src/app/router.js
+     - ./assets/app:/usr/src/app/assets/app
+     - ./assets/images:/usr/src/app/assets/images
+     - ./assets/scss:/usr/src/app/assets/scss
+     - ./assets/package.json:/usr/src/app/assets/package.json
+     - ./assets/webpack.config.js:/usr/src/app/assets/webpack.config.js
+    depends_on:
+     - redis
+    networks:
+     - redis
+  redis:
+    image: redis
+    networks:
+    - redis
+networks:
+  redis:
+    driver: bridge
